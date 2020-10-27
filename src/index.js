@@ -1,11 +1,28 @@
 const express = require('express')
-const app = express()
+const database = require('./database')
 const { port } = require('./config')
+const cors = require('cors')
+const usersAPI = require('./components/users/routes')
 
-app.get('/', (req, res, next) => (
-  res.send(`Server Status: 🟢 Online\nFor more information go to https://github.com/Ulzahk/Backend-Blog`)
+// Api
+const api = express()
+
+// MongoDB Connection
+database.connection()
+
+// Body Parser
+api.use(express.json({ extended: true, limit: '5mb' }))
+
+/// Cors
+api.use(cors())
+
+// Routes
+usersAPI(api)
+api.get('/', (req, res, next) => (
+  res.send('Server Status: [🟢 Online]\nFor more information go to https://github.com/Ulzahk/Backend-Blog')
 ))
 
-app.listen(port, (req, res) => {
-  console.log(`Server listening at http://localhost:${port}`)
+// Server
+const server = api.listen(port, (req, res) => {
+  console.log(`Server listening at http://localhost:${server.address().port}`)
 })
