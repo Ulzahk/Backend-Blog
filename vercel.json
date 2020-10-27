@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "backend-blog",
+  "name": "backend-blog-ulzahk",
   "builds": [
     {
       "use": "@vercel/node",

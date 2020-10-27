@@ -1,5 +1,5 @@
 {
-  "name": "backend-blog-ulzahk",
+  "name": "backend-blog",
   "version": "1.0.0",
   "description": "API structure for a blog Web APP",
   "main": "./src/index.js",
