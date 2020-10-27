@@ -11,8 +11,8 @@ const generateMetaTitle = (title) =>{
     .replace(/cumpleano/g, 'cumpleanio')
     .replace(/\s+ano\s+/g, ' anio')
     .replace(/\s+anos\s+/g, ' anios')
-    .replace(/\s+/g,'-')
     .trim()
+    .replace(/\s+/g,'-')
 }
 
 /**
@@ -97,5 +97,6 @@ module.exports = {
   getOneBlogPostByMetaTitle,
   createBlogPost,
   updateBlogPost,
-  deleteBlogPost
+  deleteBlogPost,
+  generateMetaTitle
 }

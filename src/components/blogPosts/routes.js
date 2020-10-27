@@ -32,11 +32,19 @@ const postAPI = (api) => {
 
   router.post('/', async (req, res, next) => {
     try {
-      const blogPost = await blogPostsController.createBlogPost(req.body)
-      res.status(201).json({
-        message: 'Blogpost created',
-        result: blogPost
-      })
+      const metaTitle = blogPostsController.generateMetaTitle(req.body.title)
+      const confirmBlogPostByMetaTittle = await blogPostsController.getOneBlogPostByMetaTitle(metaTitle)
+      if(confirmBlogPostByMetaTittle !== null){
+        res.status(400).json({
+          message: 'Repeated blogpost\'s title'
+        })
+      } else {
+        const blogPost = await blogPostsController.createBlogPost(req.body)
+        res.status(201).json({
+          message: 'Blogpost created',
+          result: blogPost
+        })
+      }
     } catch (error) {
       next(error)
     }
@@ -45,11 +53,29 @@ const postAPI = (api) => {
   router.patch('/:blogPostId', async (req, res, next) => {
     try {
       const blogPostId = req.params.blogPostId
-      const blogPost = await blogPostsController.updateBlogPost(blogPostId, req.body)
-      res.status(200).json({
-        message: `Blogpost ${blogPostId} updated`,
-        result: blogPost
-      })
+      const metaTitle = req.body.title === undefined 
+        ? req.body.title 
+        : blogPostsController.generateMetaTitle(req.body.title)
+      if(req.body.title !== undefined){
+        const confirmBlogPostByMetaTittle = await blogPostsController.getOneBlogPostByMetaTitle(metaTitle)
+        if(confirmBlogPostByMetaTittle !== null){
+          res.status(400).json({
+            message: 'Repeated blogpost\'s title'
+          })
+        } else {
+          const blogPost = await blogPostsController.updateBlogPost(blogPostId, req.body)
+          res.status(200).json({
+            message: `Blogpost ${blogPostId} updated`,
+            result: blogPost
+          })
+        }
+      } else {
+        const blogPost = await blogPostsController.updateBlogPost(blogPostId, req.body)
+        res.status(200).json({
+          message: `Blogpost ${blogPostId} updated`,
+          result: blogPost
+        })
+      }
     } catch (error) {
       next(error)
     }
@@ -60,7 +86,7 @@ const postAPI = (api) => {
       const blogPostId = req.params.blogPostId
       await blogPostsController.deleteBlogPost(blogPostId)
       res.status(200).json({
-        message: `Blogpost ${blogPostId} deleted `
+        message: `Blogpost ${blogPostId} deleted`
       })
     } catch (error) {
       next(erro)
