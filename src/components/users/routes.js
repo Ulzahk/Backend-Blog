@@ -20,10 +20,10 @@ const usersAPI = (api) => {
 
   router.get('/:userId', async (req, res, next) => {
     try {
-      const users = await usersController.getOneUserById(req.params.userId)
+      const user = await usersController.getOneUserById(req.params.userId)
       res.status(200).json({
-        message: 'User listed',
-        result: users
+        message: `User ${user} listed`,
+        result: user
       })
     } catch (error) {
       next(error)
@@ -49,13 +49,13 @@ const usersAPI = (api) => {
     }
   })
 
-  router.patch('/:userId', async(req, res, next) => {
+  router.patch('/:userId', async (req, res, next) => {
     try {
       const userId = req.params.userId
       const userBody = req.body
-      if(req.body.email !== undefined){
+      if (req.body.email !== undefined) {
         const confirmUserByEmail = await usersController.getOneUserByEmail(req.body.email)
-        if(confirmUserByEmail !== null){
+        if (confirmUserByEmail !== null) {
           res.status(400).json({
             message: 'Invalid information'
           })
@@ -68,10 +68,10 @@ const usersAPI = (api) => {
         }
       } else {
         const user = await usersController.updateUser(userId, userBody)
-          res.status(200).json({
-            message: `User ${userId} updated`,
-            result: user
-          })
+        res.status(200).json({
+          message: `User ${userId} updated`,
+          result: user
+        })
       }
     } catch (error) {
       next(error)
@@ -80,9 +80,10 @@ const usersAPI = (api) => {
 
   router.delete('/:userId', async (req, res, next) => {
     try {
-      await usersController.deleteUser(req.params.userId)
+      const userId = req.params.userId
+      await usersController.deleteUser(userId)
       res.status(200).json({
-        message: `User ${req.params.userId} deleted`
+        message: `User ${userId} deleted`
       })
     } catch (error) {
       next(error)

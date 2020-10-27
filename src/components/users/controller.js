@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt')
 const getUsers = async () => {
   return await Users.find({})
 }
-
 /**
  * Brings one user record by Id
  */
@@ -21,7 +20,6 @@ const getOneUserByEmail = async (userEmail) => {
   const lowerCaseEmail = userEmail === null ? userEmail : userEmail.toLowerCase()
   return await Users.findOne({ email: lowerCaseEmail })
 }
-
 /**
  * Creates one user record
  */
@@ -38,7 +36,6 @@ const createUser = async (user) => {
   }
   return await Users.create(userData)
 }
-
 /**
  * Updates one user record
  */
@@ -66,7 +63,6 @@ const updateUser = async (userId, user) => {
   )
   return await Users.findById(userId)
 }
-
 /**
  * Deletes one user record
  */
