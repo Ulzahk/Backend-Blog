@@ -1,6 +1,20 @@
 const BlogPosts = require('./schema')
 
 /**
+ * Generates a meta string
+ */
+const generateMetaTitle = (title) =>{
+  return title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/cumpleano/g, 'cumpleanio')
+    .replace(/\s+ano\s+/g, ' anio')
+    .replace(/\s+anos\s+/g, ' anios')
+    .replace(/\s+/g,'-')
+    .trim()
+}
+/**
  * Brings all blogPosts records
  */
 const getBlogPosts = async () => {
@@ -13,12 +27,18 @@ const getOneBlogPost = async (blogPostId) => {
   return await BlogPosts.findById(blogPostId).populate('author')
 }
 /**
+ * Brings one blopost record by meta_title
+ */
+const getOneBlogPostByMetaTitle = async (blogPostMetaTitle) => {
+  return await BlogPosts.findOne({meta_title: blogPostMetaTitle})
+}
+/**
  * Creates one BlogPost record
  */
 const createBlogPost = async (blogPost) => {
   blogPostData = {
-    title: blogPost.title,
-    meta_title: blogPost.title,
+    title: blogPost.title.trim(),
+    meta_title: generateMetaTitle(blogPost.title),
     cover: blogPost.cover,
     main_paragraph: blogPost.main_paragraph,
     content: blogPost.content,
@@ -33,8 +53,8 @@ const createBlogPost = async (blogPost) => {
  */
 const updateBlogPost = async (blogPostId, blogPost) => {
   blogPostChanges = {
-    title: blogPost.title,
-    meta_title: blogPost.meta_title,
+    title: blogPost.title === undefined ? blogPost.title : blogPost.title.trim(),
+    meta_title: blogPost.title === undefined ? blogPost.title : generateMetaTitle(blogPost.title),
     cover: blogPost.cover,
     main_paragraph: blogPost.main_paragraph,
     content: blogPost.content,
@@ -59,6 +79,7 @@ const deleteBlogPost = async (blogPostId) => {
 module.exports = {
   getBlogPosts,
   getOneBlogPost,
+  getOneBlogPostByMetaTitle,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost

@@ -18,9 +18,9 @@ const postAPI = (api) => {
     }
   })
 
-  router.get('/:blogPostId', async (req, res, next) => {
+  router.get('/:blogPostMetaTitle', async (req, res, next) => {
     try {
-      const blogPost = await blogPostsController.getOneBlogPost(req.params.blogPostId)
+      const blogPost = await blogPostsController.getOneBlogPostByMetaTitle(req.params.blogPostMetaTitle)
       res.status(200).json({
         message: `Blogpost ${req.params.blogPostId} listed`,
         result: blogPost
