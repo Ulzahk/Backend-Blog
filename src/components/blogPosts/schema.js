@@ -9,7 +9,7 @@ const BlogPosts = new Schema({
   content: { type: String, required: true },
   author: { type: Schema.ObjectId, ref: 'Users', required: true },
   category: { type: String, required: true },
-  published_date: { type: Date, required: true }
+  published_date: { type: String, required: true }
 })
 
 module.exports = mongoose.model('BlogPosts', BlogPosts)

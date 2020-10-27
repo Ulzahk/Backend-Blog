@@ -14,6 +14,21 @@ const generateMetaTitle = (title) =>{
     .replace(/\s+/g,'-')
     .trim()
 }
+
+/**
+ * Generetes an actual date string dd/mm/yyyy
+ */
+const generateCurrentDate = () =>{
+  let date = new Date()
+  let day = date.getDate()
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  if(month < 10) {
+    return `${day}-0${month}-${year}`
+  } else {
+    return `${day}-${month}-${year}`
+  }
+}
 /**
  * Brings all blogPosts records
  */
@@ -44,7 +59,7 @@ const createBlogPost = async (blogPost) => {
     content: blogPost.content,
     author: blogPost.author,
     category: blogPost.category,
-    published_date: blogPost.published_date
+    published_date: generateCurrentDate()
   }
   return await BlogPosts.create(blogPostData)
 }
@@ -60,7 +75,7 @@ const updateBlogPost = async (blogPostId, blogPost) => {
     content: blogPost.content,
     author: blogPost.author,
     category: blogPost.category,
-    published_date: blogPost.date
+    published_date: blogPost.published_date
   }
   await BlogPosts.findByIdAndUpdate(
     blogPostId,
