@@ -1,0 +1,30 @@
+{
+  "name": "backend-blog",
+  "version": "1.0.0",
+  "description": "API structure for a blog Web APP",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ulzahk/Backend-Blog.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Mongoose",
+    "MongoDB"
+  ],
+  "author": "Francisco (Ulzahk) Suarez <ulzahk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ulzahk/Backend-Blog/issues"
+  },
+  "homepage": "https://github.com/Ulzahk/Backend-Blog#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11"
+  }
+}
