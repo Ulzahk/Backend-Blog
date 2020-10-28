@@ -6,11 +6,9 @@ const BlogPosts = require('./schema')
 const generateMetaTitle = (title) =>{
   return title
     .toLowerCase()
+    .replace(/año/g, 'anio')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/cumpleano/g, 'cumpleanio')
-    .replace(/\s+ano\s+/g, ' anio')
-    .replace(/\s+anos\s+/g, ' anios')
     .trim()
     .replace(/\s+/g,'-')
 }
