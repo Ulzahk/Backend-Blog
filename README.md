@@ -33,7 +33,7 @@
 | :-------------------------| :---------------------------------------------------------------------------- |
 | Documentation             | link |
 | Frontend Repository       | https://github.com/Ulzahk/Frontend-Blog                     |
-| Blog API Postman Enpoints | https://documenter.getpostman.com/view/10957059/TVYJ5wod                      |
+| Postman Documentation: API Endpoints | https://documenter.getpostman.com/view/10957059/TVYJ5wod                      |
 | Blog APP                  | link                                         |
 
 ## License
