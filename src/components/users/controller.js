@@ -30,9 +30,10 @@ const createUser = async (user) => {
     lastname: user.lastname,
     email: user.email.toLowerCase(),
     password: await bcrypt.hash(user.password, 10),
-    page: user.page || '',
+    description: user.description || '',
+    website: user.website || '',
     twitter: user.twitter || '',
-    profile_picture: user.profile_picture || ''
+    profile_picture: user.profile_picture || 'https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg'
   }
   return await Users.create(userData)
 }
@@ -52,9 +53,10 @@ const updateUser = async (userId, user) => {
       user.password === undefined
         ? user.password
         : await bcrypt.hash(user.password, 10),
-    page: user.page || '',
-    twitter: user.twitter || '',
-    profile_picture: user.profile_picture || ''
+    description: user.description,
+    website: user.website,
+    twitter: user.twitter,
+    profile_picture: user.profile_picture
   }
   await Users.findByIdAndUpdate(
     userId,

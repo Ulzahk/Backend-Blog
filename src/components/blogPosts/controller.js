@@ -43,7 +43,7 @@ const getOneBlogPost = async (blogPostId) => {
  * Brings one blopost record by meta_title
  */
 const getOneBlogPostByMetaTitle = async (blogPostMetaTitle) => {
-  return await BlogPosts.findOne({meta_title: blogPostMetaTitle})
+  return await BlogPosts.findOne({meta_title: blogPostMetaTitle}).populate('author')
 }
 /**
  * Creates one BlogPost record

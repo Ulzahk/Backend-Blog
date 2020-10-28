@@ -7,7 +7,8 @@ const Users = new Schema({
   lastname: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  page: { type: String },
+  description: { type: String },
+  website: { type: String },
   twitter: { type: String },
   profile_picture: { type: String, required: true }
 })
