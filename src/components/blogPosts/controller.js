@@ -37,13 +37,13 @@ const getBlogPosts = async () => {
  * Brings one blogPost record
  */
 const getOneBlogPost = async (blogPostId) => {
-  return await BlogPosts.findById(blogPostId).populate('author')
+  return await BlogPosts.findById(blogPostId)
 }
 /**
  * Brings one blopost record by meta_title
  */
 const getOneBlogPostByMetaTitle = async (blogPostMetaTitle) => {
-  return await BlogPosts.findOne({meta_title: blogPostMetaTitle}).populate('author')
+  return await BlogPosts.findOne({meta_title: blogPostMetaTitle})
 }
 /**
  * Creates one BlogPost record

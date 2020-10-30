@@ -19,7 +19,7 @@
     "MongoDB"
   ],
   "author": "Francisco (Ulzahk) Suarez <ulzahk@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ulzahk/Backend-Blog/issues"
   },

@@ -7,7 +7,7 @@ const BlogPosts = new Schema({
   cover: { type: String, required: true },
   main_paragraph: { type: String, required: true },
   content: { type: String, required: true },
-  author: { type: Schema.ObjectId, ref: 'Users', required: true },
+  author: { type: Schema.ObjectId, ref: 'Users'},
   category: { type: String, required: true },
   published_date: { type: String, required: true }
 })
