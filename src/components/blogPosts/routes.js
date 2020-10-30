@@ -3,7 +3,7 @@ const blogPostsController = require('./controller')
 
 const postAPI = (api) => {
   const router = express.Router()
-  api.use('/posts', router)
+  api.use('/blogposts', router)
 
   router.get('/', async (req, res, next) => {
     try {
