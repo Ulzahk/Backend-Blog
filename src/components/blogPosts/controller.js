@@ -7,6 +7,7 @@ const generateMetaTitle = (title) =>{
   return title
     .toLowerCase()
     .replace(/ño/g, 'nio')
+    .replace(/[¿?¡!;:'"=,.<>\{\}\[\]\\\/]/g, '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
