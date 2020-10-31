@@ -44,10 +44,9 @@
 
 | Name                      | Link                                                                          |
 | :-------------------------| :---------------------------------------------------------------------------- |
-| Documentation             | link |
 | Frontend Repository       | https://github.com/Ulzahk/Frontend-Blog                     |
 | Postman Documentation: API Endpoints | https://documenter.getpostman.com/view/10957059/TVYJ5wod                      |
-| Blog APP                  | link                                         |
+| Blog APP                  | https://frontend-blog-ulzahk.vercel.app/                                         |
 
 ## License
 
