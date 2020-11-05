@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const debug = require('debug')('mongoose:connection')
 const { dbUser, dbPassword, dbHost, dbName } = require('./config')
 
 const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}?retryWrites=true&w=majority`
@@ -10,7 +11,7 @@ const connection = async (cb) => {
       useUnifiedTopology: true,
       useFindAndModify: false
     })
-    console.log('MongoDB Connected')
+    debug('MongoDB Connected')
   } catch (error) {
     cb(error)
   }
