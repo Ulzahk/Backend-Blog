@@ -1,5 +1,6 @@
 const express = require('express')
 const database = require('./database')
+const debug = require('debug')('api:server')
 const { port } = require('./config')
 const cors = require('cors')
 const usersAPI = require('./components/users/routes')
@@ -26,5 +27,5 @@ api.get('/', (req, res, next) => (
 
 // Server
 const server = api.listen(port, (req, res) => {
-  console.log(`Server listening at http://localhost:${server.address().port}`)
+  debug(`Server listening at http://localhost:${server.address().port}`)
 })

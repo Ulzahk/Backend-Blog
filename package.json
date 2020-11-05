@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "debug": "set DEBUG=express:*, api:*, mongoose:* & nodemon src/index.js",
     "lint": "standard"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "vercel": "20.1.2"
   },
   "devDependencies": {
+    "debug": "^4.2.0",
     "nodemon": "2.0.6",
     "standard": "15.0.0"
   }
